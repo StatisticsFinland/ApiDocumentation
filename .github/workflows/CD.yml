@@ -18,6 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: clean
+        run: |
+          az account clear
+
       - name: Azure login (OIDC)
         uses: azure/login@v2
         with:
