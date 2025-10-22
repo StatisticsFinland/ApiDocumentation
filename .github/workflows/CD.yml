@@ -24,7 +24,7 @@ jobs:
 
       - name: Install deps & build
         run: |
-          npm ci
+          npm install
           npm run build --if-present
 
       # Create a deployable zip (exclude node_modules if you want App Service to re-install)
