@@ -36,7 +36,7 @@ jobs:
       - name: Deploy single HTML to Web App
         run: |
           az webapp deploy \
-            --subscription "${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
+            --subscription "65ffa8f2-b970-4d1b-b290-de1b004dfd2a" \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
             --name "${{ secrets.AZURE_WEBAPP_NAME }}" \
             --src-path "index.html"
