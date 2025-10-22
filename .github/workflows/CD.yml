@@ -5,12 +5,15 @@ on:
     branches: [ "main" ]
 
 permissions:
-  id-token: write   # OIDC-token
+  id-token: write
   contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: Development
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,14 +25,9 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # Jos tiedoston nimi on muu kuin index.html, muuta --src-path
       - name: Deploy single HTML to Web App
         run: |
-          az account show
           az webapp deploy \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
             --name "${{ secrets.AZURE_WEBAPP_NAME }}" \
             --src-path "index.html"
-          # Vaihtoehto: jos haluat julkaista koko kansion tai useamman tiedoston:
-          # zip -j site.zip index.html
-          # az webapp deploy --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" --name "${{ secrets.AZURE_WEBAPP_NAME }}" --src-path site.zip
