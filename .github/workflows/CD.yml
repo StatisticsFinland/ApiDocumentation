@@ -26,7 +26,7 @@ jobs:
           allow-no-subscriptions: true
           #subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           #environment: "azurecloud"
-          audience: "api://AzureADTokenExchange"
+          #audience: "api://AzureADTokenExchange"
           #enable-AzPSSession: true
 
       - name: Deploy single HTML to Web App
