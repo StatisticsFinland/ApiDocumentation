@@ -14,7 +14,6 @@ const port = process.env.PORT || 3000;
  */
 const routes = [
   { mount: "/docs/payments", name: "Payments API", url: "https://api.example.com/openapi/payments.yaml" },
-  { mount: "/docs/orders",   name: "Orders API",   file: path.join(__dirname, "specs/orders.yaml") },
   { mount: "/docs/users",    name: "Users API",    url: "https://api.example.com/openapi/users.json" }
 ];
 
