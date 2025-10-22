@@ -25,13 +25,14 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           allow-no-subscriptions: true
           #subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          environment: "azurecloud"
-          audience: "	api://AzureADTokenExchange"
-          enable-AzPSSession: true
+          #environment: "azurecloud"
+          audience: "api://AzureADTokenExchange"
+          #enable-AzPSSession: true
 
       - name: Deploy single HTML to Web App
         run: |
           az webapp deploy \
+            --subscription "${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}" \
             --name "${{ secrets.AZURE_WEBAPP_NAME }}" \
             --src-path "index.html"
